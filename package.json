@@ -3,7 +3,7 @@
   "displayName": "Mnemostroma",
   "description": "Routes Claude Code API calls through Mnemostroma proxy for passive memory capture. Auto-configures MCP server.",
   "version": "0.1.2",
-  "publisher": "mnemostroma",
+  "publisher": "GG-QandV",
   "license": "MIT",
   "repository": {
     "type": "git",
