@@ -1,0 +1,74 @@
+{
+  "name": "mnemostroma",
+  "displayName": "Mnemostroma",
+  "description": "Routes Claude Code API calls through Mnemostroma proxy for passive memory capture. Auto-configures MCP server.",
+  "version": "0.1.2",
+  "publisher": "mnemostroma",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GG-QandV/mnemostroma-vscode.git"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "claude",
+    "memory",
+    "mcp",
+    "anthropic"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "icon": "icon.png",
+  "main": "./out/extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "Mnemostroma",
+      "properties": {
+        "mnemostroma.proxyPort": {
+          "type": "number",
+          "default": 8767,
+          "description": "Port of the Mnemostroma HTTPS proxy"
+        },
+        "mnemostroma.certPath": {
+          "type": "string",
+          "default": "",
+          "description": "Path to CA cert (leave empty for auto-detect ~/.mnemostroma/certs/passthrough-ca.pem)"
+        },
+        "mnemostroma.pythonPath": {
+          "type": "string",
+          "default": "",
+          "description": "Path to Python executable for MCP adapter (leave empty for auto-detect)"
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "mnemostroma.toggle",
+        "title": "Mnemostroma: Toggle proxy routing"
+      },
+      {
+        "command": "mnemostroma.status",
+        "title": "Mnemostroma: Show status"
+      }
+    ]
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.85.0",
+    "@vscode/vsce": "^2.24.0",
+    "typescript": "^5.3.0"
+  },
+  "dependencies": {
+    "sharp": "^0.34.5"
+  }
+}
