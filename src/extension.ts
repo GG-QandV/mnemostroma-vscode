@@ -30,7 +30,7 @@ function checkProxy(port: number): Promise<boolean> {
 // ── Env setup ─────────────────────────────────────────────────────────
 
 function applyProxyEnv(port: number, certPath: string): void {
-    const url = `https://localhost:${port}`;
+    const url = `https://127.0.0.1:${port}`;
     process.env['ANTHROPIC_BASE_URL'] = url;
     process.env['NODE_EXTRA_CA_CERTS'] = certPath;
 
@@ -64,7 +64,7 @@ function ensureMcpRegistered(pythonPath: string): void {
         type: 'stdio',
         command: pythonPath,
         args: ['-m', 'mnemostroma.integration.mcp_stdio_adapter'],
-        env: {}
+        env: { MNEMOSTROMA_DIR: MNEMO_DIR }
     };
     data['mcpServers'] = servers;
     fs.writeFileSync(CLAUDE_JSON, JSON.stringify(data, null, 2), 'utf8');
